@@ -1,25 +1,20 @@
 import random
 import string
 import math
-def calculate_area():
-    def circle_area(r):
-        cir_Area = math.pi * r**2
-        print("The circle Area is: ", cir_Area)
-
-    def rectangle_area(w,l):
-        rec_Area = l*w
-        print("The Area of rectangle: ", rec_Area)
-
-    def triangle_area(b,h):
-        tri_area = 1/2*b*h
-        print("The Area of triangle: ",tri_area)
-
-    circle_area(2)
-    rectangle_area(3,4)
-    triangle_area(4,2)
+def calculate_area(shape,**kwargs):
+    if shape == "circle":
+        return math.pi*kwargs.get('r')**2
+    elif shape == "rectangle":
+        return kwargs.get('w')*kwargs.get('l')
+    else:
+        shape =="triangle"
+        return 0.5* (kwargs.get('b')*kwargs.get('h'))
 
 
-calculate_area()
+
+print(calculate_area("circle",r=2))
+print(calculate_area("rectangle",w=4,l=3))
+print(calculate_area("triangle",b=4,h=3))
 
 
 def is_palindrome():
@@ -35,9 +30,10 @@ is_palindrome()
 
 def random_password():
     length = int(input("Enter your password length: "))
-    characters = string.ascii_letters
-    characters += string.digits
-    characters += string.punctuation
+    characters = "abc"
+    characters += "123"
+    #characters += string.punctuation
+    characters  += "@#"
     password =''.join([random.choice(characters)for i in range (length) ])
     print("your random password is: ",password)
 
